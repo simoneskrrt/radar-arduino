@@ -10,7 +10,7 @@ export default function App() {
     setDegree((prevDegree) => {
       let newDegree = direction ? prevDegree + 1 : prevDegree - 1;
 
-      if (newDegree === -90 || newDegree === 0) {
+      if (newDegree === -90 || newDegree === 90) {
         direction = !direction;
       }
 
@@ -38,7 +38,10 @@ export default function App() {
 
   return (
     <div className="screen">
-      <div className="background-radar one"></div>
+      <div className="background-radar">
+        <div className="background-radar-due" />
+        <div className="background-radar-tre" />
+      </div>
       <div className="line" style={{ transform: "rotate(30deg)" }} />
       <div className="line" style={{ transform: "rotate(60deg)" }} />
       <div className="line" />
@@ -50,6 +53,15 @@ export default function App() {
           transform: `rotate(${degree}deg)`,
         }}
       />
+      <div
+        style={{
+          background: "black",
+          width: "100vw",
+          height: "calc(100vh - 500px)",
+          zIndex: 10,
+          position: "absolute",
+        }}
+      ></div>
     </div>
   );
 }
