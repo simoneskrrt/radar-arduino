@@ -1,0 +1,31 @@
+.screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+.background-radar {
+  margin: auto auto;
+  width: 1000px;
+  height: 500px;
+  border-top-left-radius: 503px;
+  border-top-right-radius: 503px;
+  border: 3px solid green;
+}
+
+.line {
+  position: absolute;
+  width: 3px;
+  height: 503px;
+  border-left: solid 3px green;
+  top: 0;
+  left: 50%;
+  transform-origin: 0 100%;
+}
+
+.rotation {
+  width: 500px;
+  border-top-right-radius: 503px;
+  background-image: linear-gradient(green, transparent);
+}
