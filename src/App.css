@@ -1,55 +1,26 @@
-.screen {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
 }
 
-.background-radar {
-  position: relative;
-  margin: auto auto;
-  width: 1000px;
-  height: 500px;
-  border-top-left-radius: 503px;
-  border-top-right-radius: 503px;
-  border: 3px solid green;
+html {
+    overflow-y: initial;
 }
 
-.background-radar-due {
-  position: absolute;
-  bottom: 0;
-  left: 12.5%;
-  height: 375px;
-  width: 750px;
-  border-top-left-radius: 378px;
-  border-top-right-radius: 378px;
-  border: 3px solid green;
+body {
+    background-color: black;
 }
 
-.background-radar-tre {
-  position: absolute;
-  bottom: 0;
-  left: 25%;
-  height: 250px;
-  width: 500px;
-  border-top-left-radius: 253px;
-  border-top-right-radius: 253px;
-  border: 3px solid green;
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
-.line {
-  position: absolute;
-  width: 3px;
-  height: 503px;
-  border-left: solid 3px green;
-  top: 0;
-  left: 50%;
-  transform-origin: 0 100%;
-}
-
-.rotation {
-  width: 500px;
-  border-top-right-radius: 503px;
-  background-image: linear-gradient(green, transparent);
-  z-index: 0;
+button {
+    border: 2px solid white;
+    color: white;
+    background-color: transparent;
+    padding: 5px 5px;
+    border-radius: 30%;
 }

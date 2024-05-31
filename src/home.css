@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 35px;
+}
+
+.storico-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.manuale {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+input {
+    width: 50%;
+    background-color: transparent;
+    border: 1px solid white;
+    padding: 4px 8px;
+}
+
+.manuale button {
+    width: 25%;
+    border-radius: 0;
+}
+
+.manuale-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

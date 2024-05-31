@@ -1,67 +1,59 @@
-import "./App.css";
-import { useState, useEffect } from "react";
+import "./app.css";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
+import { Live } from "./Live.jsx";
+import { Home } from "./Home.jsx";
+import Radar from "./Radar.jsx";
 
 export default function App() {
-  const [degree, setDegree] = useState(-90);
-  let direction = true;
-  let time = 200;
+  const [detections, setDetections] = useState([]);
+  const [opacity, setOpacity] = useState([]);
 
-  const changeDegree = async () => {
-    setDegree((prevDegree) => {
-      let newDegree = direction ? prevDegree + 1 : prevDegree - 1;
-
-      if (newDegree === -90 || newDegree === 90) {
-        direction = !direction;
-      }
-
-      return newDegree;
-    });
-
+  const addLine = async (newDegree, newDistance) => {
     return new Promise((resolve) => {
-      setTimeout(resolve, time);
+      setDetections((prevDetections) => {
+        const newArray = [
+          ...prevDetections,
+          { degree: newDegree - 90, distance: newDistance },
+        ];
+        setOpacity((prevOpacity) => {
+          let newOpacity = [...prevOpacity, 0];
+          return newOpacity;
+        });
+        resolve(newArray);
+        return newArray;
+      });
     });
   };
-
-  const cycle = (anyFunction) => {
-    anyFunction().then(() => {
-      cycle(anyFunction);
-    });
-  };
-
-  useEffect(() => {
-    cycle(changeDegree);
-  }, []);
-
-  useEffect(() => {
-    console.log("degree: " + degree);
-  }, [degree]);
 
   return (
-    <div className="screen">
-      <div className="background-radar">
-        <div className="background-radar-due" />
-        <div className="background-radar-tre" />
-      </div>
-      <div className="line" style={{ transform: "rotate(30deg)" }} />
-      <div className="line" style={{ transform: "rotate(60deg)" }} />
-      <div className="line" />
-      <div className="line" style={{ transform: "rotate(-30deg)" }} />
-      <div className="line" style={{ transform: "rotate(-60deg)" }} />
-      <div
-        className="line rotation"
-        style={{
-          transform: `rotate(${degree}deg)`,
-        }}
+    <div style={{height: "fit-content"}}>
+      <Radar
+        detections={detections}
+        setDetections={setDetections}
+        opacity={opacity}
       />
-      <div
-        style={{
-          background: "black",
-          width: "100vw",
-          height: "calc(100vh - 500px)",
-          zIndex: 10,
-          position: "absolute",
-        }}
-      ></div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/radar-arduino/">
+            <Route
+              index
+              element={
+                <Home
+                  detections={detections}
+                  setDetections={setDetections}
+                  opacity={opacity}
+                  setOpacity={setOpacity}
+                  addLine={addLine}
+                />
+              }
+            />
+            <Route path="live" element={<Live />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
