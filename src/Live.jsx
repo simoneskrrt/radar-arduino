@@ -9,6 +9,8 @@ export const Live = (props) => {
   let newDetections;
 
   useEffect(() => {
+    props.setLive(true);
+    
     setInterval(async () => {
       axios.get(serverUrl + ".json").then((resp) => {
         for (let key in resp.data) {

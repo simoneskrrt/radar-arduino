@@ -11,6 +11,8 @@ export default function App() {
   const [detections, setDetections] = useState([]);
   const [opacity, setOpacity] = useState([]);
 
+  const [live, setLive] = useState(false);
+
   const addLine = async (newDegree, newDistance) => {
     return new Promise((resolve) => {
       setDetections((prevDetections) => {
@@ -42,7 +44,8 @@ export default function App() {
                   opacity={opacity}
                   setOpacity={setOpacity}
                   addLine={addLine}
-                  live={false}
+                  live={live}
+                  setLive={setLive}
                 />
               }
             />
@@ -55,7 +58,8 @@ export default function App() {
                   opacity={opacity}
                   setOpacity={setOpacity}
                   addLine={addLine}
-                  live={true}
+                  live={live}
+                  setLive={setLive}
                 />
               }
             />

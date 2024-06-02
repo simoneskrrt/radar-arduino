@@ -41,7 +41,7 @@ const Radar = (props) => {
 
         if (value.degree == degree + 90) {
           newOpacity[index] = 100;
-        } else if (opacity[index] != 0 && opacity[index] != undefined && !props.live) {
+        } else if (opacity[index] != 0 && opacity[index] != undefined) {
           newOpacity[index] = prevOpacity.at(index) - 5;
         } else {
           newOpacity[index] = 0;
@@ -50,23 +50,25 @@ const Radar = (props) => {
       });
     });
 
-    setOpacity((prevOpacity) => {
-      let newOpacity = [];
-      let newDetections = [];
+    if (props.live) {
+      setOpacity((prevOpacity) => {
+        let newOpacity = [];
+        let newDetections = [];
 
-      props.setDetections((prevDetections) => {
-        prevOpacity.map((value, index) => {
-          if (value != 5) {
-            newOpacity.push(value);
-            newDetections.push(prevDetections[index]);
-          }
+        props.setDetections((prevDetections) => {
+          prevOpacity.map((value, index) => {
+            if (value != 5) {
+              newOpacity.push(value);
+              newDetections.push(prevDetections[index]);
+            }
+          });
+
+          return newDetections;
         });
 
-        return newDetections;
+        return newOpacity;
       });
-
-      return newOpacity;
-    });
+    }
 
     console.log(opacity);
     console.log(props.detections);

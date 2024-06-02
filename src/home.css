@@ -28,6 +28,7 @@ input {
     background-color: transparent;
     border: 1px solid white;
     padding: 4px 8px;
+    z-index: 4;
 }
 
 .manuale button {

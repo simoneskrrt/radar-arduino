@@ -1,7 +1,7 @@
 import "./app.css";
 import "./home.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Radar from "./Radar";
 
@@ -43,6 +43,10 @@ export function Home(props) {
     await props.addLine(143, 15);
     await props.addLine(174, 38);
   };
+
+  useEffect(() => {
+    props.setLive(false);
+  }, []);
 
   return (
     <>
