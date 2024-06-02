@@ -16,7 +16,7 @@ export default function App() {
       setDetections((prevDetections) => {
         const newArray = [
           ...prevDetections,
-          { degree: newDegree - 90, distance: newDistance },
+          { degree: newDegree, distance: newDistance },
         ];
         setOpacity((prevOpacity) => {
           let newOpacity = [...prevOpacity, 0];
@@ -29,12 +29,7 @@ export default function App() {
   };
 
   return (
-    <div style={{height: "fit-content"}}>
-      <Radar
-        detections={detections}
-        setDetections={setDetections}
-        opacity={opacity}
-      />
+    <div style={{ height: "fit-content" }}>
       <BrowserRouter>
         <Routes>
           <Route path="/radar-arduino/">
@@ -47,10 +42,23 @@ export default function App() {
                   opacity={opacity}
                   setOpacity={setOpacity}
                   addLine={addLine}
+                  live={false}
                 />
               }
             />
-            <Route path="live" element={<Live />} />
+            <Route
+              path="live"
+              element={
+                <Live
+                  detections={detections}
+                  setDetections={setDetections}
+                  opacity={opacity}
+                  setOpacity={setOpacity}
+                  addLine={addLine}
+                  live={true}
+                />
+              }
+            />
           </Route>
         </Routes>
       </BrowserRouter>

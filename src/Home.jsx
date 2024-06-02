@@ -3,6 +3,7 @@ import "./home.css";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Radar from "./Radar";
 
 export function Home(props) {
   const [inputDegree, setInputDegree] = useState(0);
@@ -45,6 +46,11 @@ export function Home(props) {
 
   return (
     <>
+      <Radar
+        detections={props.detections}
+        setDetections={props.setDetections}
+        opacity={props.opacity}
+      />
       <div className="container">
         <div className="storico">
           <h2>Scegli la registrazione che vuoi mostrare: </h2>
@@ -91,16 +97,18 @@ export function Home(props) {
         </div>
       </div>
       <Link
-        to="/live"
+        to="/radar-arduino/live"
         style={{
           width: "100%",
           display: "flex",
           justifyContent: "center",
           marginTop: "40px",
           marginBottom: "20px",
-          textDecoration: "none"
+          textDecoration: "none",
         }}
-        onClick={() => {props.setDetections([])}}
+        onClick={() => {
+          props.setDetections([]);
+        }}
       >
         <button
           style={{
