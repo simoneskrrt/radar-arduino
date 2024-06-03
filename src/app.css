@@ -24,3 +24,7 @@ button {
     padding: 5px 5px;
     border-radius: 30%;
 }
+
+button:hover {
+    cursor: pointer;
+}

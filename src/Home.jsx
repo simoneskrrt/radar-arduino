@@ -6,9 +6,11 @@ import { Link } from "react-router-dom";
 import Radar from "./Radar";
 
 export function Home(props) {
+  // States per input manuale di angolo e distanza
   const [inputDegree, setInputDegree] = useState(0);
   const [inputDistance, setInputDistance] = useState(0);
 
+  // Funzioni per aggiungere casi di rilevamenti predefiniti
   const addCase1 = async () => {
     props.setDetections([]);
     props.setOpacity([]);
@@ -44,18 +46,22 @@ export function Home(props) {
     await props.addLine(174, 38);
   };
 
+  // Imposta la modalità live su false quando il componente è montato
   useEffect(() => {
     props.setLive(false);
   }, []);
 
   return (
     <>
+      {/* Componente Radar che visualizza i rilevamenti */}
       <Radar
         detections={props.detections}
         setDetections={props.setDetections}
         opacity={props.opacity}
+        degree={props.degree}
       />
       <div className="container">
+        {/* Sezione per mostrare casi predefiniti */}
         <div className="storico">
           <h2>Scegli la registrazione che vuoi mostrare: </h2>
           <div className="storico-buttons">
@@ -64,6 +70,7 @@ export function Home(props) {
             <button onClick={addCase3}>Caso 3</button>
           </div>
         </div>
+        {/* Sezione per aggiungere rilevamenti manualmente */}
         <div className="manuale">
           <h2>Aggiungi manualmente degli elementi da mostrare: </h2>
           <div className="input-form">
@@ -89,17 +96,28 @@ export function Home(props) {
           <div className="manuale-buttons">
             <button
               onClick={() => {
-                props.addLine(inputDegree, inputDistance);
-                setInputDegree(0);
-                setInputDistance(0);
+                // Aggiunge una nuova linea di rilevamento manuale
+                props.addLine(inputDegree, inputDistance).then(() => {
+                  setInputDegree(0);
+                  setInputDistance(0);
+                });
               }}
             >
               Invia
             </button>
-            <button onClick={() => props.setDetections([])}>Reset</button>
+            <button
+              onClick={() => {
+                // Reset dei rilevamenti e dell'opacità
+                props.setDetections([]);
+                props.setOpacity([]);
+              }}
+            >
+              Reset
+            </button>
           </div>
         </div>
       </div>
+      {/* Link per passare alla modalità live */}
       <Link
         to="/radar-arduino/live"
         style={{
@@ -112,6 +130,7 @@ export function Home(props) {
         }}
         onClick={() => {
           props.setDetections([]);
+          props.setOpacity([]);
         }}
       >
         <button
