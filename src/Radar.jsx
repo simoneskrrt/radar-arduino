@@ -29,8 +29,8 @@ const Radar = (props) => {
             style={{
               transform: `rotate(${90 - value.degree}deg)`,
               borderImage: `linear-gradient(to top, transparent ${
-                (value.distance / 60) * 100
-              }%, red ${(value.distance / 60) * 100}%) 5`,
+                (value.distance / 400) * 100
+              }%, red ${(value.distance / 400) * 100}%) 5`,
               opacity: props.opacity[key] != undefined ? props.opacity[key] / 100 : 0,
             }}
             key={key}

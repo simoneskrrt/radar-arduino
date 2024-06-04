@@ -11,6 +11,10 @@
     gap: 20px;
 }
 
+.storico-buttons button {
+    width: 20%;
+}
+
 .manuale {
     display: flex;
     flex-direction: column;
@@ -33,7 +37,6 @@ input {
 
 .manuale button {
     width: 25%;
-    border-radius: 0;
 }
 
 .manuale-buttons {

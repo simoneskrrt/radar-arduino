@@ -15,41 +15,45 @@ export function Home(props) {
     props.setDetections([]);
     props.setOpacity([]);
 
-    await props.addLine(45, 20);
-    await props.addLine(46, 28);
-    await props.addLine(89, 54);
-    await props.addLine(153, 12);
+    for (let i = 57; i < 78; i++) {
+      await props.addLine(i, 183);
+    }
   };
 
   const addCase2 = async () => {
     props.setDetections([]);
     props.setOpacity([]);
 
-    await props.addLine(7, 4);
-    await props.addLine(81, 6);
-    await props.addLine(7, 4);
-    await props.addLine(81, 6);
-    await props.addLine(118, 9);
-    await props.addLine(139, 16);
-    await props.addLine(155, 26);
-    await props.addLine(157, 29);
-    await props.addLine(172, 39);
-    await props.addLine(173, 47);
+    for (let i = 48; i < 95; i++) {
+      await props.addLine(i, 63);
+    }
   };
 
   const addCase3 = async () => {
     props.setDetections([]);
     props.setOpacity([]);
 
-    await props.addLine(15, 8);
-    await props.addLine(143, 15);
-    await props.addLine(174, 38);
+    for (let i = 32; i < 64; i++) {
+      await props.addLine(i, 257);
+    }
+
+    for (let i = 134; i < 172; i++) {
+      await props.addLine(i, 302);
+    }
   };
 
   // Imposta la modalità live su false quando il componente è montato
   useEffect(() => {
     props.setLive(false);
   }, []);
+
+  useEffect(() => {
+    console.log(props.detections);
+  }, [props.detections]);
+
+  useEffect(() => {
+    console.log(props.opacity);
+  }, [props.opacity]);
 
   return (
     <>
@@ -84,7 +88,7 @@ export function Home(props) {
             />
           </div>
           <div className="input-form">
-            <h3>Distanza (compreso tra 0 e 60 cm)</h3>
+            <h3>Distanza (compreso tra 0 e 400 cm)</h3>
             <input
               type="number"
               onChange={(event) => {

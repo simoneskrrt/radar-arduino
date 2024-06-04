@@ -15,7 +15,7 @@ export default function App() {
 
   // Variabili per la direzione e il tempo con cui si muove il radar
   let direction = false;
-  let time = 200;
+  const time = 100;
 
   // Funzione per aggiungere una nuova linea di rilevamento
   const addLine = async (newDegree, newDistance) => {
@@ -77,7 +77,7 @@ export default function App() {
           prevOpacity[index] !== 0 &&
           prevOpacity[index] !== undefined
         ) {
-          newOpacity[index] = prevOpacity[index] - 5;
+          newOpacity[index] = prevOpacity[index] - 2;
         } else if (prevOpacity[index] === 0) {
           newOpacity[index] = 0;
         }
@@ -109,7 +109,8 @@ export default function App() {
   }, [degree]);
 
   return (
-    <div style={{ height: "fit-content" }}>
+    <>
+      <h1>Radar a ultrasuoni</h1>
       {/* Configura il router per la navigazione */}
       <BrowserRouter>
         <Routes>
@@ -147,6 +148,10 @@ export default function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </div>
+      <footer>
+        <p style={{fontSize: 12}}>MMM© All rights reserved</p>
+        <p>Hope you enjoyed!</p>
+      </footer>
+    </>
   );
 }
