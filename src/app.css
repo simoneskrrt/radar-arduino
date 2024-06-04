@@ -39,6 +39,9 @@ footer {
   padding: 10px 15px;
   margin-top: 45px;
   align-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 h1 {
