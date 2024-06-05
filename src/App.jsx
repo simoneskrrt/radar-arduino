@@ -109,7 +109,7 @@ export default function App() {
   }, [degree]);
 
   return (
-    <>
+    <div style={{ position: "relative", minHeight: "100vh", paddingBottom: "35px" }}>
       <h1>Radar a ultrasuoni</h1>
       {/* Configura il router per la navigazione */}
       <BrowserRouter>
@@ -149,9 +149,9 @@ export default function App() {
         </Routes>
       </BrowserRouter>
       <footer>
-        <p style={{fontSize: 12}}>MMM© All rights reserved</p>
+        <p style={{ fontSize: 12 }}>MMM© All rights reserved</p>
         <p>Hope you enjoyed!</p>
       </footer>
-    </>
+    </div>
   );
 }
